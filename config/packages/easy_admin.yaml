@@ -1,0 +1,21 @@
+easy_admin:
+    list:
+        title: "list.%%entity_label%%"
+        max_results: 30
+    show:
+        title: "%%entity_label%% (%%entity_id%%)"
+    site_name: 'Trade Admin'
+    entities:
+        Product:
+            class: App\Entity\Product
+            label: "label.products"
+            list:
+                fields: ['id', 'name', 'categories', {property: 'owner', permission: 'ROLE_ADMIN'}]
+                help: "help.products_listing"
+                # title: "%%entity_label%% listing"
+#        - App\Entity\Category
+        User:
+            permission: 'ROLE_SUPER_ADMIN'
+            label: "label.users"
+            class: App\Entity\User
+            list:

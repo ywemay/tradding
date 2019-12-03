@@ -1,0 +1,42 @@
+
+App\Entity\Product:
+    attributes:
+        access_control: 'is_granted("ROLE_USER")'
+        normalization_context:
+            groups: ['product:read']
+        denormalization_context:
+            groups: ['product:write']
+    collectionOperations:
+        get:
+            access_control: "is_granted('ROLE_USER')"
+        post:
+            access_control: 'is_granted("ROLE_MODERATOR")'
+    itemOperations:
+        get:
+            access_control: 'is_granted("ROLE_AUTHENTICATED")'
+            # access_control: 'is_granted("ROLE_MODERATOR") and object.owner == user'
+        put:
+            access_control: 'is_granted("ROLE_MODERATOR") and previous_object.getOwner() == user'
+        delete:
+            access_control: 'is_granted("ROLE_ADMIN") or (is_granted("ROLE_MODERATOR") and previous_object.owner == user)'
+App\Entity\Category:
+    attributes:
+        access_control: 'is_granted("ROLE_USER")'
+        normalization_context:
+            groups: ['product:read']
+        denormalization_context:
+            groups: ['product:write']
+
+    collectionOperations:
+        get:
+            access_control: "is_granted('ROLE_USER')"
+        post:
+            access_control: 'is_granted("ROLE_MODERATOR")'
+    itemOperations:
+        get:
+            access_control: 'is_granted("ROLE_AUTHENTICATED")'
+            # access_control: 'is_granted("ROLE_MODERATOR") and object.owner == user'
+        put:
+            access_control: 'is_granted("ROLE_MODERATOR") and previous_object.owner == user'
+        delete:
+            access_control: 'has_role("ROLE_ADMIN") or (is_granted("ROLE_MODERATOR") and previous_object.owner == user)'

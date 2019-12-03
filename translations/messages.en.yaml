@@ -1,0 +1,6 @@
+action.save: "Save"
+action.delete: "Delete"
+action.list: "List"
+list.%entity_label%: "%entity_label% listing"
+label.users: "Users"
+label.products: "Products"

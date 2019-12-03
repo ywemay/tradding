@@ -1,0 +1,37 @@
+App\Entity\Category:
+    category1:
+        name: 'Sweets'
+    category2:
+        name: 'Fruits'
+    category3:
+        name: 'Clothes'
+
+App\Entity\User:
+    user_admin:
+        username: 'admin'
+        # /encoded password: admin
+        password: '\$argon2id\$v=19\$m=65536,t=4,p=1\$PLyJW/cXDfUKcIa8T8l+rg\$UQ14xLk0ss4JVMyM3uwm2IaULvrMqme/3DVRnLV8eQQ'
+        roles: ['ROLE_ADMIN']
+    user_moderator:
+        username: 'moderator'
+        # /encoded password: moderator
+        password: '\$argon2id\$v=19\$m=65536,t=4,p=1\$ywL2tGDmyJVa0xp7dOD6jw\$CFalBWi5VxoCKbtOIdiRD6QkhjdRn0vC6S7OKi7NdRQ'
+        roles: ['ROLE_MODERATOR']
+    user_user:
+        username: 'user'
+        password: '\$argon2id\$v=19\$m=65536,t=4,p=1\$mYndGU0bIV6x6J6pDw+XUQ\$L0mLbNMSOS3FReEMjbnJupHzhCq+yW9iCmx4Zgm4OzY'
+        roles: ['ROLE_USER']
+
+App\Entity\Product:
+    product_{1..10}:
+        name: <text()>
+        categories: ['@category1']
+        owner: '@user_moderator'
+    product_{11..20}:
+        name: <text()>
+        categories: ['@category3', '@category2']
+        owner: '@user_moderator'
+    product_{20..25}:
+        name: <text()>
+        categories: ['@category3']
+        owner: '@user_moderator'

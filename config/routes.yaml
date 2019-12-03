@@ -1,0 +1,15 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+api_user_login:
+    path: /api/user/login
+
+authentication_token:
+    path: /authentication_token
+    methods: ['POST']
+
+api:
+    path: /api/li
+    controller: App\Controller\SecurityController::api
+    methods: ['POST']
