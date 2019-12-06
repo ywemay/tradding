@@ -85,4 +85,24 @@ class MediaObject
     {
         return $this->id;
     }
+
+    /**
+     * @var string|null
+     *
+     * @Groups({"media_object_read"})
+     */
+    public function getUrl(): ?string
+    {
+      return $this->contentUrl;
+    }
+
+    /**
+     * @var int
+     *
+     * @Groups({"media_object_read"})
+     */
+    public function getUid(): ?int
+    {
+      return $this->getId();
+    }
 }

@@ -53,8 +53,8 @@ export default {
       fetchProductList(this.listQuery).then(response => {
         console.log(response)
         this.total = response['hydra:totalItems']
-        let hView = response['hydra:view']
-        let lLast = hView['hydra:last']
+        const hView = response['hydra:view']
+        const lLast = hView['hydra:last']
         if (lLast) {
           var mt = lLast.match(/page=(\d+)/)
           // if (mt[1]) this.listQuery.limit = parseInt(mt[1])
